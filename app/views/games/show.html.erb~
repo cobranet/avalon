@@ -1,0 +1,10 @@
+<% content_for :head do %>
+
+<div class="jumbotron">
+  <div class="container">
+        <%= image_tag "avalon.png", size: "300x250" %> 
+        <p>This site will choose character for you and send information that you need</p>
+    </div>
+</div>
+
+<%end%>

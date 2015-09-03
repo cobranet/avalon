@@ -1,0 +1,52 @@
+<% content_for :head do %>
+
+<div class="jumbotron">
+  <div class="container">
+        <%= image_tag "avalon.png", size: "300x250" %> 
+        <p>This site will choose character for you and send information that you need</p>
+    </div>
+</div>
+
+<%end%>
+
+<% content_for :main do %>
+
+<% if current_user %>
+   <%= link_to "Sign out", signout_path, id: "sign_out" %>
+   <%= image_tag current_user.image %>
+  <div class="col-md-6">
+ 
+  <div class="dropdown">
+  <button class="btn-lg  btn-default dropdown-toggle" type="button" id="chooseVariant" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Open new game
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <% Variant.all.each do |v| %>
+       <li><a href="<%= new_game_path(:variant => v.id)%>"><%=v.description %></a></li>
+    <% end %>
+  </ul>
+  </div>
+  </div>
+   <%else%>    
+     <h2><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-primary btn-lg" %></h2>
+   <%end%>
+
+   
+  <div class="col-md-6">
+    <% for game in @opengames do %>
+    <div class="row">
+
+         <div class="col-md-1"> 
+	  <%= game.id %>
+	</div>
+	 <div class="col-md-4"> 
+	  <%= image_tag game.user.image %>
+	 </div>
+	 <div class="col-md-7">
+	   <%= link_to "Join", join_game_path(game), id: "join", class: "btn btn-primary btn-lg",method: "post"   %>
+	   </div>
+      </div>	
+    <% end %>
+  </div>  
+<% end %>

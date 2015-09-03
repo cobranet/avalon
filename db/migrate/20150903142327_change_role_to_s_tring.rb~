@@ -1,0 +1,4 @@
+class ChangeRoleToSTring < ActiveRecord::Migration
+  def change
+  end
+end

@@ -1,0 +1,4 @@
+class AddVariantToGame < ActiveRecord::Migration
+  def change
+  end
+end

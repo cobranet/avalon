@@ -1,0 +1,61 @@
+<% content_for :head do %>
+
+<div class="jumbotron">
+  <div class="container">
+        <%= image_tag "avalon.png", size: "300x250" %> 
+        <p>This site will choose character for you and send information that you need</p>
+    </div>
+</div>
+
+<%end%>
+
+<% content_for :main do %>
+   <div class="row">
+
+     <div class="col-md-1">
+        <%= image_tag   @game.user.image %>
+     </div>
+
+     <div class = "col-md-3">
+       <% if @game.status == 0 %>
+         <%= link_to "Start", start_game_path(@game), id: "start", class: "btn btn-primary btn-lg",method: "post"   %>
+       <% end %>
+     </div>
+     
+     <% for player in @game.players do %>
+       <div class="col-md-1">
+         <%= image_tag User.find(player.user_id).image %>
+       </div>
+     <% end %>.
+
+   </div>
+
+   <div class="row">
+     <% (0..@variant.oznake.size-1).each do |i| %>
+        <%= image_tag Character.get(@variant.oznake[i]).image %>
+     <% end %>
+   </div>
+<% end %>
+<% content_for :what_i_know do %>
+   <% c = Character.get(@Iam) %>
+   <%= "You are #{c.name}" %>
+   <%= image_tag c.image %>
+   
+   <% if @Iam == "A"%>
+      Bad gays are 
+      <% @game.minions.each do |bad| %>
+        <%= image_tag User.find(bad).image %>
+      <% end %>
+   <% end %>
+
+   <% if ["B", "H"].include?(@Iam) %>
+      We are the power!!
+      <% @game.minions.each do |bad| %>
+        <%= image_tag User.find(bad).image %>
+      <% end %>
+   <% end %>
+      
+<% end %>
+   
+
+   

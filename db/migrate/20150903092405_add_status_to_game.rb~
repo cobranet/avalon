@@ -1,0 +1,4 @@
+class AddStatusToGame < ActiveRecord::Migration
+  def change
+  end
+end
