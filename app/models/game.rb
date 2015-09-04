@@ -8,6 +8,14 @@ class Game < ActiveRecord::Base
     add_roles
     self.save!
   end
+
+  def my_role(user_id)
+    self.players.each do |p|
+      if  p.user_id == user_id
+        return p.role
+      end
+    end  
+  end
   def minions
     arr = []
     self.players.each do |p|

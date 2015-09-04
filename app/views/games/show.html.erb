@@ -1,19 +1,13 @@
 <% content_for :head do %>
-
-<div class="jumbotron">
-  <div class="container">
-        <%= image_tag "avalon.png", size: "300x250" %> 
-        <p>This site will choose character for you and send information that you need</p>
-    </div>
-</div>
-
+  <%= render partial: 'jumbo' %>
 <%end%>
 
 <% content_for :main do %>
    <div class="row">
 
      <div class="col-md-1">
-        <%= image_tag   @game.user.image %>
+       <%= image_tag   @game.user.image %>
+       <%= @game.status %>
      </div>
 
      <div class = "col-md-3">
@@ -35,8 +29,11 @@
         <%= image_tag Character.get(@variant.oznake[i]).image %>
      <% end %>
    </div>
-<% end %>
-<% content_for :what_i_know do %>
+   <% end %>
+
+   <% if @game.status == 1 %>   
+
+   <% content_for :what_i_know do %>
    <% c = Character.get(@Iam) %>
    <%= "You are #{c.name}" %>
    <%= image_tag c.image %>
@@ -56,6 +53,6 @@
    <% end %>
       
 <% end %>
-   
+<% end %>   
 
    

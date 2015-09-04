@@ -7,7 +7,9 @@ class GamesController < ApplicationController
   def show
     @game=Game.find(params[:id])
     @variant = Variant.find(@game.variant)
-    @Iam = "A"
+    if @game.status == 2
+      @Iam = @game.my_role(current_user.id)
+    end
   end 
 
   def join
