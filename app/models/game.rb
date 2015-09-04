@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   belongs_to :user
   has_many :players
-  @@MINIONS = ["B","H"]
+  @@MINIONS = ["B","H","E"]
   def start
     self.status = 1
     self.players.create(:user_id => self.user_id)
