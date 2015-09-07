@@ -16,6 +16,17 @@ class Game < ActiveRecord::Base
       end
     end  
   end
+
+  def who_is(role)
+    arr = []
+    self.players.each do |p|
+      if role == p.role
+        arr << p.user_id
+      end
+    end
+    arr
+  end
+  
   def minions
     arr = []
     self.players.each do |p|
@@ -25,6 +36,7 @@ class Game < ActiveRecord::Base
     end
     arr
   end
+  
   def add_roles
     variant = Variant.find(self.variant)
     arr = []

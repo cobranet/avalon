@@ -27,12 +27,21 @@ variants = [ { description: "Standard 5 player", num_of_players: 5, oznake: "ABG
              { description: "Standard 8 player", num_of_players: 8, oznake: "ABGGHGHG"},
              { description: "Standard 9 player", num_of_players: 9,  oznake:"ABGGHGHGG"},
              { description: "Standard 9 player", num_of_players: 10,  oznake:"ABGGHGHGGH"},
+
              { description: "PercivalMorgana 5 player", num_of_players: 5,  oznake:"ABGCE"},
              { description: "PercivalMorgana 6 player", num_of_players: 6,  oznake:"ABGGCE"},
              { description: "PercivalMorgana 7 player", num_of_players: 7,  oznake:"ABGGHCE"},
              { description: "PercivalMorgana 8 player", num_of_players: 8,  oznake:"ABGGHGCE"},
              { description: "PercivalMorgana 9 player", num_of_players: 9,  oznake:"ABGGHGCEG"},
-             { description: "PercivalMorgana 10 player", num_of_players: 10,  oznake:"ABGGHGHGCE"}
+             { description: "PercivalMorgana 10 player", num_of_players: 10,  oznake:"ABGGHGHGCE"},
+
+             { description: "PercivalMordred 5 player", num_of_players: 5,  oznake:"ABGCD"},
+             { description: "PercivalMordred 6 player", num_of_players: 6,  oznake:"ABGGCD"},
+             { description: "PercivalMordred 7 player", num_of_players: 7,  oznake:"ABGGHCD"},
+             { description: "PercivalMordred 8 player", num_of_players: 8,  oznake:"ABGGHGCD"},
+             { description: "PercivalMordred 9 player", num_of_players: 9,  oznake:"ABGGHGCDG"},
+             { description: "PercivalMordred 10 player", num_of_players: 10,  oznake:"ABGGHGHGCD"},
+             
            ]
 
 variants.each do |v|

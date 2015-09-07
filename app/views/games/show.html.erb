@@ -45,10 +45,20 @@
       <% end %>
    <% end %>
 
-   <% if ["B", "H"].include?(@Iam) %>
+   <% if ["B", "H","E"].include?(@Iam) %>
       We are the power!!
       <% @game.minions.each do |bad| %>
         <%= image_tag User.find(bad).image %>
+      <% end %>
+   <% end %>
+
+   <% if "C" ==  @Iam %>
+      You know of Merlin
+      <% @game.who_is("A").each do |merlin| %>
+        <%= image_tag User.find(merlin).image %>
+      <% end %>
+      <% @game.who_is("E").each do |morgana| %>
+        <%= image_tag User.find(morgana).image %>
       <% end %>
    <% end %>
       
