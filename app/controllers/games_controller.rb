@@ -6,7 +6,7 @@ class GamesController < ApplicationController
 
   def show
     @game=Game.find(params[:id])
-    @variant = Variant.find(@game.variant)
+    @variant = Variant.find(params[:variant])
     if @game.status == 1
       @Iam = @game.my_role(current_user.id)
     end
@@ -23,8 +23,8 @@ class GamesController < ApplicationController
     g.start
     redirect_to game_url(g)
   end
-
-  def new
+  
+  def create
     g = Game.create( :user_id => current_user.id, :variant => params[:variant], :status => 0)
     redirect_to game_url(g)
   end
