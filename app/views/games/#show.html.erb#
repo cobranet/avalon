@@ -31,8 +31,10 @@
    <div class="row">
      <% (0..@variant.oznake.size-1).each do |i| %>
         <%cha = Character.get(@variant.oznake[i])%>
+     
         <div id='<%="cha#{cha.oznaka}"%>'>
           <%= image_tag cha.image %>
+	  <%= image_tag @game.who_is(cha.role)
 	</div>
      <% end %>
     </div>

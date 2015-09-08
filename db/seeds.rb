@@ -14,33 +14,42 @@ characters = [{ name: "Merlin" , oznaka: "A",  image: "merlin.png" },
               { name: "Morgana", oznaka: "E", image: "morgana.png" },
               { name: "Obreon", oznaka: "F", image: "obreon.png"},
               { name: "Loyal Servants of Arthur", oznaka: "G", image: "lsoa.png"},
-              { name: "Minion of Mordred" , oznaka: "H", image: "minion.png" }]
+              { name: "Minion of Mordred" , oznaka: "H", image: "minion.png" },
+              { name: "Loyal Servants of Arthur", oznaka: "I", image: "lsoa1.png"},
+              { name: "Loyal Servants of Arthur", oznaka: "J", image: "lsoa2.png"},
+              { name: "Loyal Servants of Arthur", oznaka: "K", image: "lsoa3.png"},
+              { name: "Loyal Servants of Arthur", oznaka: "L", image: "lsoa4.png"},
+              { name: "Minion of Mordred" , oznaka: "M", image: "minion1.png" },
+              { name: "Minion of Mordred" , oznaka: "N", image: "minion2.png" }
+              
+              
+             ]
 
 characters.each do |c|
   Character.create(c)
 end  
 
 Variant.delete_all
-variants = [ { description: "Standard 5 player", num_of_players: 5, oznake: "ABGGH"},
-             { description: "Standard 6 player", num_of_players: 6, oznake: "ABGGHG"},
-             { description: "Standard 7 player", num_of_players: 7, oznake: "ABGGHGH"},
-             { description: "Standard 8 player", num_of_players: 8, oznake: "ABGGHGHG"},
-             { description: "Standard 9 player", num_of_players: 9,  oznake:"ABGGHGHGG"},
-             { description: "Standard 9 player", num_of_players: 10,  oznake:"ABGGHGHGGH"},
+variants = [ { description: "Standard", num_of_players: 5, oznake: "ABGIH"},
+             { description: "Standard", num_of_players: 6, oznake: "ABGIHJ"},
+             { description: "Standard", num_of_players: 7, oznake: "ABGIHJH"},
+             { description: "Standard", num_of_players: 8, oznake: "ABGIHJMK"},
+             { description: "Standard", num_of_players: 9,  oznake:"ABHGIMJK"},
+             { description: "Standard", num_of_players: 10,  oznake:"ABGIHJMKLN"},
 
-             { description: "PercivalMorgana 5 player", num_of_players: 5,  oznake:"ABGCE"},
-             { description: "PercivalMorgana 6 player", num_of_players: 6,  oznake:"ABGGCE"},
-             { description: "PercivalMorgana 7 player", num_of_players: 7,  oznake:"ABGGHCE"},
-             { description: "PercivalMorgana 8 player", num_of_players: 8,  oznake:"ABGGHGCE"},
-             { description: "PercivalMorgana 9 player", num_of_players: 9,  oznake:"ABGGHGCEG"},
-             { description: "PercivalMorgana 10 player", num_of_players: 10,  oznake:"ABGGHGHGCE"},
+             { description: "PercivalMorgana", num_of_players: 5,  oznake:"ABGCE"},
+             { description: "PercivalMorgana", num_of_players: 6,  oznake:"ABGICE"},
+             { description: "PercivalMorgana", num_of_players: 7,  oznake:"ABGIHCE"},
+             { description: "PercivalMorgana", num_of_players: 8,  oznake:"ABGIHJCE"},
+             { description: "PercivalMorgana", num_of_players: 9,  oznake:"ABGIHJCEK"},
+             { description: "PercivalMorgana", num_of_players: 10,  oznake:"ABGIHJMKCE"},
 
-             { description: "PercivalMordred 5 player", num_of_players: 5,  oznake:"ABGCD"},
-             { description: "PercivalMordred 6 player", num_of_players: 6,  oznake:"ABGGCD"},
-             { description: "PercivalMordred 7 player", num_of_players: 7,  oznake:"ABGGHCD"},
-             { description: "PercivalMordred 8 player", num_of_players: 8,  oznake:"ABGGHGCD"},
-             { description: "PercivalMordred 9 player", num_of_players: 9,  oznake:"ABGGHGCDG"},
-             { description: "PercivalMordred 10 player", num_of_players: 10,  oznake:"ABGGHGHGCD"},
+             { description: "PercivalMordred", num_of_players: 5,  oznake:"ABGCD"},
+             { description: "PercivalMordred", num_of_players: 6,  oznake:"ABGICD"},
+             { description: "PercivalMordred", num_of_players: 7,  oznake:"ABGIHCD"},
+             { description: "PercivalMordred", num_of_players: 8,  oznake:"ABGIHJDCD"},
+             { description: "PercivalMordred", num_of_players: 9,  oznake:"ABGIHJCDK"},
+             { description: "PercivalMordred", num_of_players: 10,  oznake:"ABGIHJMKCD"},
              
            ]
 

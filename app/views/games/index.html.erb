@@ -1,12 +1,5 @@
 <% content_for :head do %>
-
-<div class="jumbotron">
-  <div class="container">
-        <%= image_tag "avalon.png", size: "300x250" %> 
-        <p>This site will choose character for you and send information that you need</p>
-    </div>
-</div>
-
+  <% render partial: 'jumbo' %>
 <%end%>
 
 <% content_for :main do %>
@@ -41,9 +34,15 @@
          <div class="col-md-1"> 
 	  <%= game.id %>
 	</div>
-	 <div class="col-md-4"> 
+	 <div class="col-md-1"> 
 	  <%= image_tag game.user.image %>
 	 </div>
+     <% for player in Game.find(game.id).players do %>
+       <div class="col-md-1">
+         <%= image_tag User.find(player.user_id).image %>
+       </div>
+     <% end %>.
+
 	 <div class="col-md-7">
 	   <%= link_to "Join", join_game_path(game), id: "join", class: "btn btn-primary btn-lg",method: "post"   %>
 	   </div>
