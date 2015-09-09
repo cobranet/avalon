@@ -1,8 +1,12 @@
 class GamesController < ApplicationController
   
   def index
-    @opengames = Game.where(:status => 0).all
-    @game = Game.new
+    if current_user
+      g = Game.user_game(current_user.id)
+      if g
+        redirect_to game_url(g)
+      end
+    end                    
   end
 
   def show
@@ -12,6 +16,18 @@ class GamesController < ApplicationController
       @Iam = @game.my_role(current_user.id)
     end
   end 
+
+  def list
+    @opengames = Game.where(:status => 0).all
+  end
+  def kill
+    @game = Game.find(params[:id])
+    @game.kill_game
+    redirect_to games_path
+  end
+  def open
+    @game = Game.new
+  end
   
   def join
     g = Game.find(params[:id])

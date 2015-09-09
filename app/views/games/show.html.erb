@@ -1,19 +1,13 @@
-<% if not current_user %>
-  <% content_for :head do %>
-    <%= render partial: 'jumbo' %>
-  <%end%>
-<% end %>
 
 <% content_for :main do %>
    <div class="row">
 
-     <div class = "col-md-1">
-       <%= image_tag current_user.image %>
+     <div class = )"col-md-1">
+       <%= image_tag current_user.image,alt: current_user.name %>
      </div>
      
      <div class="col-md-1">
        <%= image_tag   @game.user.image %>
-       <%= @game.status %>
      </div>
 
 
@@ -24,7 +18,7 @@
        <div class="col-md-1">
          <%= image_tag User.find(player.user_id).image %>
        </div>
-     <% end %>.
+     <% end %>
 
    </div>
 
@@ -49,40 +43,46 @@
    <% content_for :what_i_know do %>
    <% c = Character.get(@Iam) %>
    <%= "You are #{c.name}" %>
-   <%= image_tag c.image %>
+   <%= image_tag c.image  %>
    
    <% if @Iam == "A"%>
       Bad gays are 
-      <% @game.minions.each do |bad| %>
-        <%= image_tag User.find(bad).image %>
+        <% @game.minions.each do |bad| %>
+         <% user = User.find(bad) %>
+        <%= image_tag user.image , alt: user.name    %>
       <% end %>
    <% end %>
 
-   <% if @Iam == "G" %>
+   <% if ["G","F"].include?(@Iam)  %>
    You have no clue who is who?
    <% end %>
+
    
    <% if ["B", "H","E"].include?(@Iam) %>
       We are the power!!
       <% @game.minions.each do |bad| %>
-        <%= image_tag User.find(bad).image %>
+      <% user = User.find(bad) %>
+        <%= image_tag user.image,alt: user.name %>
       <% end %>
    <% end %>
 
    <% if "C" ==  @Iam %>
       You know of Merlin
       <% @game.who_is("A").each do |merlin| %>
-        <%= image_tag User.find(merlin).image %>
+        <% user.find(merlin) %>
+        <%= image_tag user.image, alt: user.name %>
       <% end %>
       <% @game.who_is("E").each do |morgana| %>
-        <%= image_tag User.find(morgana).image %>
+        <% user.find(morgana) %>
+        <%= image_tag user.image, alt: user.name %>
       <% end %>
    <% end %>
 
    <% if "D" ==  @Iam %>
       Merlin can't see you, and these are your minions.
-      <% @game.minions.each do |bad| %>
-        <%= image_tag User.find(bad).image %>
+        <% @game.minions.each do |bad| %>
+	<% user = User.find(bad) %>
+        <%= image_tag user.image, alt: user.name %>
       <% end %>
  
    <% end %>

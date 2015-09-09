@@ -1,0 +1,26 @@
+<% content_for :main do %>
+
+   
+  <div class="col-md-6">
+    <% for game in @opengames do %>
+    <div class="row">
+
+         <div class="col-md-1"> 
+	  <%= game.id %>
+	</div>
+	 <div class="col-md-1"> 
+	  <%= image_tag game.user.image %>
+	 </div>
+     <% for player in Game.find(game.id).players do %>
+       <div class="col-md-1">
+         <%= image_tag User.find(player.user_id).image %>
+       </div>
+     <% end %>.
+
+	 <div class="col-md-7">
+	   <%= link_to "Join", join_game_path(game), id: "join", class: "btn btn-primary btn-lg",method: "post"   %>
+	   </div>
+      </div>	
+    <% end %>
+  </div>  
+<% end %>

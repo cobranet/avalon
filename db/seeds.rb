@@ -12,7 +12,7 @@ characters = [{ name: "Merlin" , oznaka: "A",  image: "merlin.png" },
               { name: "Percival", oznaka: "C", image: "percival.png"},
               { name: "Modred", oznaka: "D" , image: "modred.png" },
               { name: "Morgana", oznaka: "E", image: "morgana.png" },
-              { name: "Obreon", oznaka: "F", image: "obreon.png"},
+              { name: "Obreon", oznaka: "F", image: "oberon.png"},
               { name: "Loyal Servants of Arthur", oznaka: "G", image: "lsoa.png"},
               { name: "Minion of Mordred" , oznaka: "H", image: "minion.png" },
               { name: "Loyal Servants of Arthur", oznaka: "I", image: "lsoa1.png"},
@@ -50,6 +50,22 @@ variants = [ { description: "Standard", num_of_players: 5, oznake: "ABGIH"},
              { description: "PercivalMordred", num_of_players: 8,  oznake:"ABGIHJDCD"},
              { description: "PercivalMordred", num_of_players: 9,  oznake:"ABGIHJCDK"},
              { description: "PercivalMordred", num_of_players: 10,  oznake:"ABGIHJMKCD"},
+
+             { description: "OberonMordred", num_of_players: 5,  oznake:"ABGFD"},
+             { description: "OberonMordred", num_of_players: 6,  oznake:"ABGIFD"},
+             { description: "OberonMordred", num_of_players: 7,  oznake:"ABGIHFD"},
+             { description: "OberonMordred", num_of_players: 8,  oznake:"ABGIHJDFD"},
+             { description: "OberonMordred", num_of_players: 9,  oznake:"ABGIHJFDK"},
+             { description: "OberonMordred", num_of_players: 10,  oznake:"ABGIHJMKFD"},
+
+
+             { description: "OberonMorgana", num_of_players: 5,  oznake:"ABGCF"},
+             { description: "OberonMorgana", num_of_players: 6,  oznake:"ABGICF"},
+             { description: "OberonMorgana", num_of_players: 7,  oznake:"ABGIHCF"},
+             { description: "OberonMorgana", num_of_players: 8,  oznake:"ABGIHJCF"},
+             { description: "OberonMorgana", num_of_players: 9,  oznake:"ABGIHJCFK"},
+             { description: "OberonMorgana", num_of_players: 10,  oznake:"ABGIHJMKCF"},
+
              
            ]
 

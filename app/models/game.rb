@@ -1,20 +1,39 @@
 class Game < ActiveRecord::Base
   belongs_to :user
   has_many :players
-  @@MINIONS = ["B","H","E"]
+  @@MINIONS = ["B","H","E","D"]
   def start
     self.status = 1
     self.players.create(:user_id => self.user_id)
     add_roles
     self.save!
   end
-
+  
   def my_role(user_id)
     self.players.each do |p|
       if  p.user_id == user_id
         return p.role
       end
     end  
+  end
+
+  def kill_game
+    self.status = 2
+    self.save!
+  end
+  
+  def self.user_game(user_id)
+    Game.where("status = 1 or status = 0").to_a.each do |g|
+
+      if g.user_id == user_id
+        return g.id
+      end
+      
+      if g.players.map { |x| x.user_id }.include?(user_id)
+        return g.id
+      end
+    end
+    return nil
   end
   
   def is_startable?

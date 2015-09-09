@@ -3,6 +3,11 @@ Avalon::Application.routes.draw do
     member do
       post 'join'
       post 'start'
+      post 'kill'
+    end
+    collection do
+      get 'list'
+      get 'open'      
     end
   end
    
