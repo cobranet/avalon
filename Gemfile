@@ -52,3 +52,4 @@ end
 gem 'omniauth-facebook'
 gem 'thin'
 gem 'faye-rails'
+

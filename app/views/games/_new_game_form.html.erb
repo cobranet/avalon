@@ -1,0 +1,11 @@
+    <%= form_tag do  %>
+      <div class="form-group">
+	<label for="num_play">Broj igrača</label>
+	<%= select_tag  "num_play",options_for_select((5..10).collect{ |x|  x }), {class: "form-control",id: "sel_num_play"   } %>
+     </div>   
+     <div class="form-group">
+	<label for="variant">Varijanta</label>
+	<%= select_tag "variant", options_for_select(Variant.all.collect{ |v| [v.description, v.description] }.uniq) , {class:   "form-control"}   %>
+     </div>
+        <%= submit_tag "Open game",class: "btn btn-large btn-primary"  %>
+    <% end %>

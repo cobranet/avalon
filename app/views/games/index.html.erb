@@ -8,49 +8,14 @@
    <%= link_to "Sign out", signout_path, id: "sign_out" %>
    <%= image_tag current_user.image %>
    <%= current_user.name %>
-  <div class="col-md-6">
-    <%= form_tag(games_path) do %>
-      <div class="form-group">
-	<label for="num_play">Broj igrača</label>
-        <select id="num_play"  class="form-control">
-	  <% (5..10).each do |v| %>
-               <option   value='<%= v %>'><%=v %></option>
-	   <% end %>
-         </select>
-     </div>   
-      <div class="form-group">
-	<label for="variant">Broj igrača</label>
 
-	<select id="variant" class="form-control">
-      <% Variant.all.each do |v| %>
-        <option><%=v.description %></option>
-	<% end %>
-
-     </select>
-
-	<%= select_tag 'variant2', options_for_select(Variant.all.collect{ |v| [v.description, v.id] }) , {class:   "form-control"}   %>
-     
-      </div>
-        <button type="submit" class="btn btn-default">Open new game</button>
-    <% end %>
-    
-    <div class="dropdown">
-      <button class="btn-lg  btn-default dropdown-toggle" type="button" id="chooseVariant" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-	Open new game
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-	<% Variant.all.each do |v| %>
-        <li><a href="<%= new_game_path(:variant => v.id)%>"><%=v.description %></a></li>
-	<% end %>
-      </ul>
-    </div>
-
-
+   <div class="col-md-6">
+    <%= render partial: 'new_game_form' %>
   </div>
-   <%else%>    
+
+<%else%>    
      <h2><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-primary btn-lg" %></h2>
-   <%end%>
+<%end%>
 
    
   <div class="col-md-6">
