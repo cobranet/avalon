@@ -51,6 +51,12 @@ class GamesController < ApplicationController
     g.start
     redirect_to game_url(g)
   end
+
+  def restart
+    g = Game.find(params[:id])
+    g.restart
+    redirect_to game_url(g)
+  end
   
   def create
     

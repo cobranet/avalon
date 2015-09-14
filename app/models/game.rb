@@ -9,6 +9,11 @@ class Game < ActiveRecord::Base
     add_roles
     self.save!
   end
+
+  def restart
+    add_roles
+    self.save!
+  end
   
   def my_role(user_id)
     self.players.each do |p|

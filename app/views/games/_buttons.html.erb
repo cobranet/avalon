@@ -17,6 +17,12 @@
 	                         class: "btn btn-primary btn-lg",
 	                         method: "post"   %>
        </div>
+       <div class = "col-md-2">
+          <%= link_to "Restart", restart_game_path(@game),
+	                         id: "restart",
+	                         class: "btn btn-primary btn-lg",
+	                         method: "post"   %>
+       </div>
  <% end %>
 
  <%if current_user && current_user.id != @game.user_id  %>

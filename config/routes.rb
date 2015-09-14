@@ -5,6 +5,7 @@ Avalon::Application.routes.draw do
       post 'start'
       post 'kill'
       post 'leave'
+      post 'restart'
     end
     collection do
       get 'list'
