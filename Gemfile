@@ -53,3 +53,4 @@ gem 'omniauth-facebook'
 gem 'thin'
 gem 'faye-rails'
 
+gem 'rails_12factor', group: :production
