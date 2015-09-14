@@ -11,6 +11,7 @@ class Game < ActiveRecord::Base
   end
 
   def restart
+    self.status = 1
     add_roles
     self.save!
   end
