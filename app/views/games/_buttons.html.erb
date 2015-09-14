@@ -1,4 +1,6 @@
- <%if @game.is_startable? && current_user && current_user.id == @game.user_id   %>
+a
+
+<%if (@game.is_startable? || @game.is_restartable? ) && current_user && current_user.id == @game.user_id   %>
        <div class = "col-md-2">
           <% if @game.status == 0 %>
             <%= link_to "Start", start_game_path(@game),
@@ -7,23 +9,21 @@
 	                         method: "post"   %>
           <% end %>
        </div>
- <% end %>
-
-
- <%if current_user && current_user.id == @game.user_id   %>
-       <div class = "col-md-2">
-            <%= link_to "Kill", kill_game_path(@game),
-	                         id: "kill",
-	                         class: "btn btn-primary btn-lg",
-	                         method: "post"   %>
-       </div>
        <div class = "col-md-2">
           <%= link_to "Restart", restart_game_path(@game),
 	                         id: "restart",
 	                         class: "btn btn-primary btn-lg",
 	                         method: "post"   %>
        </div>
+  <div class = "col-md-2">
+            <%= link_to "Kill", kill_game_path(@game),
+	                         id: "kill",
+	                         class: "btn btn-primary btn-lg",
+	                         method: "post"   %>
+       </div>
  <% end %>
+
+
 
  <%if current_user && current_user.id != @game.user_id  %>
        <div class = "col-md-2">

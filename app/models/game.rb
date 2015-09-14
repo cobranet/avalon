@@ -56,6 +56,9 @@ class Game < ActiveRecord::Base
   def is_startable?
     return self.players.size == Variant.find(self.variant).num_of_players - 1 # all but owner
   end
+  def is_restartable?
+    return self.players.size == Variant.find(self.variant).num_of_players  # all 
+  end
 
   def reveal_to(role)
     #Merlin 
