@@ -11,3 +11,20 @@
  *= require_self
  *= require_tree .
  */
+
+
+div.current_user {
+    padding: 10px;
+}
+
+div.game_owner {
+    text-align: center;
+    padding: 4px;
+    background-color: red;
+    border: 2px solid black;
+}
+
+div.players {
+    text-align: center;
+    padding: 20px;
+}

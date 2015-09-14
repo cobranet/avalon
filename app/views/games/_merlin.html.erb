@@ -1,0 +1,5 @@
+Bad gays are 
+<% @game.merlin_see.each do |bad| %>
+  <% user = User.find(bad) %>
+  <%= image_tag user.image , alt: user.name    %>
+<% end %>

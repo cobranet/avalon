@@ -1,0 +1,4 @@
+<% if current_user %>
+  <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <%= image_tag current_user.image %>
+  <%= current_user.name %>

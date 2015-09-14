@@ -1,22 +1,37 @@
-
 <% content_for :main do %>
-   <div class="row">
+   <div class="row current_user">
 
-     <div class = )"col-md-1">
-       <%= image_tag current_user.image,alt: current_user.name %>
+     <div class = "col-md-12">
+       <div class="row">
+
+	 <div class="col-md-6">
+	   <%= render partial: 'current_user' %>
+	    </div>
+	    
+	    <div class="col-md-6">
+	      <%= render partial: 'buttons' %>
+	    </div>
+       </div>
      </div>
-     
-     <div class="col-md-1">
-       <%= image_tag   @game.user.image %>
+   </div>
+   
+     <div class="row players">
+       <div class="col-md-1 game_owner">
+	 Game owner
+       <%= image_tag   @game.user.image_file %>
      </div>
 
 
-     <%= render partial: 'start_button' %>
 
-     
-     <% for player in @game.players do %>
+
        <div class="col-md-1">
-         <%= image_tag User.find(player.user_id).image %>
+	 Players waiting ...
+       </div>
+     
+       <% for player in @game.players do %>
+
+       <div class="col-md-1">
+         <%= image_tag User.find(player.user_id).image_file %>
        </div>
      <% end %>
 
@@ -30,7 +45,6 @@
 	  
           <div id='<%="cha#{cha.oznaka}"%>'>
             <%= image_tag cha.image %>
-	    <%= image_tag @game.who_is(cha.oznaka) %>
 	   </div>
       </div>
       <% end %>
@@ -41,18 +55,16 @@
    <% if @game.status == 1 %>   
 
    <% content_for :what_i_know do %>
+
    <% c = Character.get(@Iam) %>
    <%= "You are #{c.name}" %>
    <%= image_tag c.image  %>
    
    <% if @Iam == "A"%>
-      Bad gays are 
-        <% @game.minions.each do |bad| %>
-         <% user = User.find(bad) %>
-        <%= image_tag user.image , alt: user.name    %>
-      <% end %>
+     <%= render partial: 'merlin' %>
    <% end %>
 
+   
    <% if ["G","F"].include?(@Iam)  %>
    You have no clue who is who?
    <% end %>
@@ -62,27 +74,28 @@
       We are the power!!
       <% @game.minions.each do |bad| %>
       <% user = User.find(bad) %>
-        <%= image_tag user.image,alt: user.name %>
+        <%= image_tag user.image_file,alt: user.name %>
       <% end %>
    <% end %>
 
    <% if "C" ==  @Iam %>
       You know of Merlin
-      <% @game.who_is("A").each do |merlin| %>
-        <% user.find(merlin) %>
-        <%= image_tag user.image, alt: user.name %>
-      <% end %>
-      <% @game.who_is("E").each do |morgana| %>
-        <% user.find(morgana) %>
-        <%= image_tag user.image, alt: user.name %>
-      <% end %>
+        <% user = User.find_by_id(@game.who_is("A")) %>
+	<% if user %>
+        <%= image_tag user.image_file, alt: user.name  %>
+	<%end %>
+
+        <% user = User.find_by_id(@game.who_is("E")) %>
+	<% if user %>
+        <%= image_tag user.image_file, alt: user.name %>
+	<%end%>
    <% end %>
 
    <% if "D" ==  @Iam %>
-      Merlin can't see you, and these are your minions.
+      Merlin can't see you, we are the power.
         <% @game.minions.each do |bad| %>
 	<% user = User.find(bad) %>
-        <%= image_tag user.image, alt: user.name %>
+        <%= image_tag user.image_file, alt: user.name %>
       <% end %>
  
    <% end %>

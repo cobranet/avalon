@@ -6,6 +6,12 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    u = :user_id.to_s.to_i
+    g = Game.user_game(u)
+    
+    if g
+      Game.find(g).leave_game(u)
+    end  
     session[:user_id] = nil
     redirect_to root_url, :notice => "Signed out!"
   end

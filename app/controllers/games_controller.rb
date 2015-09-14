@@ -9,8 +9,19 @@ class GamesController < ApplicationController
     end                    
   end
 
+  def leave
+    @game = Game.find_by_id(params[:id])
+    @game.leave_game(current_user.id)
+    redirect_to games_path
+  end
+  
   def show
-    @game=Game.find(params[:id])
+    @game = Game.find_by_id(params[:id])
+    if  @game == nil || Game.user_game(current_user.id) != @game.id
+      redirect_to games_url
+      return
+    end
+    
     @variant = Variant.find(@game.variant)
     if @game.status == 1
       @Iam = @game.my_role(current_user.id)

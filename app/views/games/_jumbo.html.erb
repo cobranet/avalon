@@ -1,29 +1,28 @@
-<div class="jumbotron">
-  <div class="container">
+<div class="row">
+  
+   <div class="col-md-4">
+     <%= image_tag "avalon.png", size: "300x250" %> 
+     <p>
+       This site will choose character for you and send information that you need
+     </p>
+   </div>
+	 
+   <div class="col-md-8">
+     <% if current_user %>
        <div class="row">
-       <% if current_user %>
-            <%= link_to "Sign out", signout_path, id: "sign_out" %>
-	    <%= image_tag current_user.image %>
-	    <%= current_user.name %>
+         <%= render partial: 'current_user' %>
+	 <h2>
+	   <%= link_to "Join",list_games_path,class:"btn btn-large btn-primary" %>
+	 </h2>
        </div>
- <div class="row">
-      <div class="col-md-6">
-        <%= image_tag "avalon.png", size: "300x250" %> 
-        <p>This site will choose character for you and send information that you need</p>
-      </div>
-
-      <div class="col-md-6">
-	<div class="row">
-	  <%= link_to "Join",list_games_path,class:"btn btn-large btn-primary" %>
-	</div>
-	<div class="row">
-	  <%= link_to "Create",open_games_path,class:"btn btn-large btn-primary" %>
-	</div>
-   
-       
-     <%else%>    
-         <h2><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class: "btn btn-primary btn-lg" %></h2>
+       <div class="row">
+         <h2>
+           <%= link_to "Create",open_games_path,class:"btn btn-large btn-primary" %>
+         </h2>
+       </div>	 
+     <% else %>
+       <%= render partial: 'sign_in' %>
      <%end%>
-      </div>
-  </div>
+
+   </div>
 </div>
