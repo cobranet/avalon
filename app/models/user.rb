@@ -30,8 +30,9 @@ class User < ActiveRecord::Base
   end
                    
   def image_file
-    if self.haveimage == 1
-      asset_url("assets/users/user#{self.id}.png")
+    if self.haveimage == 1 &&  Rails.env.production? == false
+    #      asset_url("assets/users/user#{self.id}.png")
+            asset_url("assets/users/user#{self.id}.png")
     else
       download_image
       self.image
