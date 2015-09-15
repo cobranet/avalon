@@ -105,8 +105,10 @@ class Game < ActiveRecord::Base
       arr << variant.oznake[x]
     end
     arr.shuffle.each_with_index do |oznaka,index|
-      self.players[index].role = oznaka
-      self.players[index].save!
+      if players[index] 
+        self.players[index].role = oznaka
+        self.players[index].save!
+      end 
     end
   end
   
