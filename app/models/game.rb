@@ -3,6 +3,22 @@ class Game < ActiveRecord::Base
   has_many :players
   @@MINIONS = ["B","H","E","D"]
   @@MERLIN_SEE = ["B","H","E","F"]
+  @@MESSAGES = { "A" => "Bad gays are",
+                 "B" => "We are the power",
+                 "C" => "You know of Merlin",
+                 "D" => "Merlin can't se you and We are the power",
+                 "E" => "Percival can't tell diference and we are the power",
+                 "F" => "You know nothing",
+                 "G" => "You know nothing",
+                 "H" => "We are the power",
+                 "I" => "You know nothing",
+                 "J" => "You know nothing",
+                 "K" => "You know nothing",
+                 "L" => "You know nothing",
+                 "M" => "We are the power",
+                 "N" => "We are the power" }
+    
+                 
   def start
     self.status = 1
     self.players.create(:user_id => self.user_id)
@@ -28,7 +44,24 @@ class Game < ActiveRecord::Base
     self.status = 2
     self.save!
   end
-
+  def json_data(user_id)
+    data = {}
+    data['game_id'] = self.id
+    data['players'] = []
+    self.players.each do |p|
+      u = User.find(p.user_id) 
+      data['players'] << { 'user_name' => u.name, 'image' => u.image }
+    end 
+    data['game_status'] = self.status
+    v = Variant.find(self.variant)
+    data['variant'] = { 'desc' => v.description, 'oznake' => v.oznake }
+    if self.status == 1
+      role = self.my_role(user_id)
+      data['you_are'] = role
+      data['message'] = @@MESSAGES[role]
+    end 
+    data.to_json
+  end
   def leave_game(user_id)
     self.players.each do |player|
       if user_id == player.user_id

@@ -5,8 +5,13 @@ class GamesController < ApplicationController
       g = Game.user_game(current_user.id)
       if g
         redirect_to game_url(g)
+        return 
       end
-    end                    
+    end
+    respond_to do |format|
+      format.html
+      format.json { render :json => {state: "LOGIN" } }
+    end  
   end
 
   def refresh
@@ -24,12 +29,16 @@ class GamesController < ApplicationController
     @game = Game.find_by_id(params[:id])
     if  @game == nil || Game.user_game(current_user.id) != @game.id
       redirect_to games_url
-      return
+      return 
     end
     
     @variant = Variant.find(@game.variant)
     if @game.status == 1
       @Iam = @game.my_role(current_user.id)
+    end
+    respond_to do |format|
+      format.html
+      format.json { render :json => @game.json_data(current_user.id) }
     end
   end 
 
