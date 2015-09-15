@@ -9,6 +9,11 @@ class GamesController < ApplicationController
     end                    
   end
 
+  def refresh
+    g = Game.user_game(current_user.id)
+    redirect_to game_url(g)
+  end
+  
   def leave
     @game = Game.find_by_id(params[:id])
     @game.leave_game(current_user.id)
