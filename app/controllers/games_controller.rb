@@ -5,9 +5,10 @@ class GamesController < ApplicationController
       g = Game.user_game(current_user.id)
       if g
         redirect_to game_url(g)
-        return 
+        return
       end
     end
+    
     respond_to do |format|
       format.html
       format.json { render :json => {state: "LOGIN" } }
@@ -45,11 +46,13 @@ class GamesController < ApplicationController
   def list
     @opengames = Game.where(:status => 0).all
   end
+
   def kill
     @game = Game.find(params[:id])
     @game.kill_game
     redirect_to games_path
   end
+
   def open
     @game = Game.new
   end
