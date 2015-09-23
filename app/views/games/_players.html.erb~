@@ -1,0 +1,16 @@
+   <div class="row players">
+     <div class="col-md-1 game_owner">
+       Game owner
+       <%= image_tag   @game.user.image_file %>
+     </div>
+     <div class="col-md-1">
+	 Players
+     </div>
+
+     <% for player in @game.players do %>
+       <div class="col-md-1">
+         <%= image_tag User.find(player.user_id).image_file %>
+       </div>
+     <% end %>
+
+   </div>

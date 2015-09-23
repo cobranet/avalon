@@ -1,0 +1,10 @@
+<div class="row chars" id="chars">
+  <% (0..@variant.oznake.size-1).each do |i| %>
+    <div class="col-md-2">
+      <% cha = Character.get(@variant.oznake[i])%>
+      <div id='<%="cha#{cha.oznaka}"%>'>
+        <%= image_tag cha.image %>
+      </div>
+    </div>
+  <% end %>
+</div>
